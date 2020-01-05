@@ -1,0 +1,8 @@
+<ng-container *ngIf="loading$ | async as loading">
+  <app-loading-spinner
+    *ngIf="loading.isLoading"
+    [cssClass]="loading.cssClass"
+    [message]="loading.message"
+  >
+  </app-loading-spinner>
+</ng-container>
