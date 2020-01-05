@@ -1,7 +1,9 @@
 {
   "name": "shared-components",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+    "publish-reactive-ionic": "ng build reactive-ionic && npm publish dist/reactive-ionic"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
