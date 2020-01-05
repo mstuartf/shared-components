@@ -48,3 +48,40 @@ export class AppModule {}
 <reactive-loading-spinner></reactive-loading-spinner>
 
 ```
+
+(3) In your reducer, control the visibility, message and css class of the built-in Ionic loading spinner by setting the `isLoading`, `message` and `cssClass` store values.
+
+```
+...
+import { LoadingState } from "reactive-ionic/lib/reactive-loading-spinner/state/loading.state";
+import { StoreAction } from "../../state/store-action.interface";
+
+const initialState: LoadingState = {
+  isLoading: false,
+  message: null,
+  cssClass: null
+};
+
+export function loadingReducer(state: LoadingState = initialState, action: StoreAction): LoadingState {
+
+  switch (action.type) {
+
+    case MyActions.REQUEST:
+      return {
+        isLoading: true,
+        message: "Request in progress",
+        cssClass: "my-request-spinner"
+      };
+
+    case UserActions.REQUEST_SUCCESS:
+    case UserActions.REQUEST_FAILURE:
+      return {
+        ...inititalState
+      };
+
+    default:
+      return state;
+  }
+}
+
+```
