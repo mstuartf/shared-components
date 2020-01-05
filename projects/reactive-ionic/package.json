@@ -1,6 +1,6 @@
 {
   "name": "reactive-ionic",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
@@ -8,5 +8,17 @@
     "@ngrx/effects": "^7.2.0",
     "@ngrx/store": "^7.2.0",
     "@ionic/angular": "4.3.1"
-  }
+  },
+  "keywords": [
+    "ionic",
+    "Ionic",
+    "Ionic 2",
+    "Ionic 3",
+    "Ionic 4",
+    "Angular",
+    "NgRx",
+    "RxJs",
+    "loading",
+    "declarative"
+  ]
 }
