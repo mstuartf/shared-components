@@ -2,6 +2,8 @@
 
 This library is a collection of modules to make it easier to use NgRx and Ionic together. All the modules are simply wrappers for the same Ionic implementation under the hood.
 
+View on [npm](https://www.npmjs.com/package/reactive-ionic).
+
 ## LoadingModule
 
 TODO: allow standard loading spinner configurations to be passed as args.
