@@ -1,25 +1,48 @@
 # ReactiveIonic
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+This library is a collection of modules to make it easier to use NgRx and Ionic together. All the modules are simply wrappers for the same Ionic implementation under the hood.
 
-## Code scaffolding
+## LoadingModule
 
-Run `ng generate component component-name --project reactive-ionic` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project reactive-ionic`.
+TODO: allow standard loading spinner configurations to be passed as args.
 
-> Note: Don't forget to add `--project reactive-ionic` or else it will be added to the default project in your `angular.json` file.
+Use this module to control whether the Ionic loading spinner shows or is hidden based on NgRx store values (declarative), rather than explicitly having to call `create` / `dismiss` (imperative).
 
-## Build
+### Setup
 
-Run `ng build reactive-ionic` to build the project. The build artifacts will be stored in the `dist/` directory.
+(1) Import `ReactiveLoadingModule` into your app module, and pass your loading reducer to the `forRoot` method:
 
-## Publishing
+```
+# app.module.ts
+...
+import { ReactiveLoadingModule } from "reactive-ionic";
+import { myLoadingReducer } from "./providers/loading/loading.reducer";
 
-After building your library with `ng build reactive-ionic`, go to the dist folder `cd dist/reactive-ionic` and run `npm publish`.
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    ReactiveLoadingModule.forRoot({ reducer: myLoadingReducer })
+  ],
+  providers: [
+    ...
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
 
-## Running unit tests
+```
 
-Run `ng test reactive-ionic` to execute the unit tests via [Karma](https://karma-runner.github.io).
+(2) Add the `ReactiveLoadingSpinnerComponent` to your app component template:
 
-## Further help
+```
+<!-- app.component.html -->
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+<reactive-loading-spinner></reactive-loading-spinner>
+
+```
