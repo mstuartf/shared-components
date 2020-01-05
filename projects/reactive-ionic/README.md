@@ -4,7 +4,7 @@ This library is a collection of modules to make it easier to use NgRx and Ionic 
 
 View on [npm](https://www.npmjs.com/package/reactive-ionic).
 
-## LoadingModule
+## ReactiveLoadingSpinnerModule
 
 TODO: allow standard loading spinner configurations to be passed as args.
 
@@ -12,12 +12,12 @@ Use this module to control whether the Ionic loading spinner shows or is hidden 
 
 ### Setup
 
-(1) Import `ReactiveLoadingModule` into your app module, and pass your loading reducer to the `forRoot` method:
+(1) Import `ReactiveLoadingSpinnerModule` into your app module, and pass your loading reducer to the `forRoot` method:
 
 ```
 # app.module.ts
 ...
-import { ReactiveLoadingModule } from "reactive-ionic";
+import { ReactiveLoadingSpinnerModule } from "reactive-ionic";
 import { myLoadingReducer } from "./providers/loading/loading.reducer";
 
 @NgModule({
@@ -26,7 +26,7 @@ import { myLoadingReducer } from "./providers/loading/loading.reducer";
   ],
   imports: [
     ...
-    ReactiveLoadingModule.forRoot({ reducer: myLoadingReducer })
+    ReactiveLoadingSpinnerModule.forRoot({ reducer: myLoadingReducer })
   ],
   providers: [
     ...

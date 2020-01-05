@@ -15,12 +15,12 @@ import { loadingStateKey } from "./state/loading.state";
   declarations: [LoadingSpinnerComponent, LoadingSpinnerContainerComponent],
   exports: [LoadingSpinnerContainerComponent]
 })
-export class ReactiveLoadingModule {
+export class ReactiveLoadingSpinnerModule {
   static forRoot(
     config: LoadingServiceConfig
-  ): ModuleWithProviders<ReactiveLoadingModule> {
+  ): ModuleWithProviders<ReactiveLoadingSpinnerModule> {
     return {
-      ngModule: ReactiveLoadingModule,
+      ngModule: ReactiveLoadingSpinnerModule,
       providers: [{ provide: LoadingServiceConfig, useValue: config }]
     };
   }
