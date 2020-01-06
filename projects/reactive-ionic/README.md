@@ -85,3 +85,85 @@ export function loadingReducer(state: LoadingState = initialState, action: Store
 }
 
 ```
+
+##ReactivePopupModule
+
+Use this module to show, hide and set the contents of an Ionic popup based on NgRx store values (declarative), rather than explicitly having to call `create` and assigning callbacks (imperative).
+
+### Setup
+
+(1) Import `ReactivePopuprModule` into your app module, and pass your popup reducer to the `forRoot` method:
+
+```
+# app.module.ts
+...
+import { ReactivePopuprModule } from "reactive-ionic";
+import { myPopupReducer } from "./providers/popup/popup.reducer";
+
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    ReactivePopuprModule.forRoot({ reducer: myPopupReducer })
+  ],
+  providers: [
+    ...
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+```
+
+(2) Add the `ReactivePopupComponent` to your app component template:
+
+```
+<!-- app.component.html -->
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
+
+<reactive-popup></reactive-popup>
+
+```
+
+(3) In your reducer, control the visibility, contents and class of the built-in Ionic popup, and any buttons and the actions they should dispatch.
+
+```
+...
+import { PopupState } from "reactive-ionic/lib/reactive-popup/state/popup.state";
+import { StoreAction } from "../../state/store-action.interface";
+
+const initialState: PopupState = null;
+
+export function loadingReducer(state: PopupState = initialState, action: StoreAction): PopupState {
+
+  switch (action.type) {
+
+    case UserActions.INITIATE_SOME_FLOW:
+      return {
+        header: "Confirm",
+        message: "Are you sure you want to do this?",
+        cssClass: "my-popup",
+        buttons: [
+            {
+                text: "Yes",
+                cssClass: "my-popup-ok",
+                action: new MyActions.MyPopupConfim()
+            },
+            {
+                text: "No",
+                cssClass: "my-popup-cancel",
+                action: new MyActions.MyPopupCancl()
+            }
+        ]
+      };
+
+    default:
+      return state;
+  }
+}
+
+```
